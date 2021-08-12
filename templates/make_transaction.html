@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Make Transaction{% endblock title %}
+
+{% block body %}
+
+<div class="container-fluid px-0">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel"></div>
+        <div class="carousel-inner">
+            <div class="carousel-item active ">
+                <img src="https://media.istockphoto.com/photos/mobile-payment-with-wallet-app-and-wireless-nfc-technology-man-paying-picture-id1158779061?k=6&m=1158779061&s=612x612&w=0&h=HAiCuRJlxEzcWIVo_zk81l-q2nFMjEFDMgWmb6Cf80g=" width="1520" height="500" class="d-block " alt="...">
+            </div>
+        </div>
+    </div>
+</div>
+
+<h1 class="text-center my-3"></h1>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="mbr-white col-md-10">
+            <h2 class="mbr-section-title align-center  pb-3 mbr-fonts-style display-1">Transfer Money </h2>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <div class="row-cols-1">
+        <label for="name" class="form-label">Sender</label>
+        <select class="form-select" aria-label="Default select example" id="sname" name="sname">
+            {% for c in vc %}
+            <option value="" disabled selected hidden>Select Your Name</option>
+            <option value="{{c.name}}">{{c.name}}</option>
+            {% endfor %}
+        </select>
+        <label for="name" class="form-label">Receiver</label>
+        <select class="form-select" aria-label="Default select example" id="rname" name="rname">
+            {% for c in vc %}
+            <option value="" disabled selected hidden>Select Your Name</option>
+            <option value="{{c.name}}">{{c.name}} </option>
+            
+            {% endfor %}
+        </select>
+        <label for="amount" class="form-label">Amount</label>
+        <input type="number" id="amount" name="amount">
+        </div>
+        <button type="submit" class="btn btn-outline-primary mt-4 ">Transfer Money</button>
+
+
+    </form>
+
+
+</div>
+<div class="mb-5">
+</div>
+
+{% endblock body %}
